@@ -100,10 +100,6 @@
                 </div>
                 <div style="display:flex; align-items:center; gap:8px;">
                   <div style="width:6px; height:6px; border-radius:50%; background:#9a7cc0; flex:none;"></div>
-                  <span style="font-family:'Nunito',sans-serif; font-size:12.5px; color:#4d4060;"><strong style="color:#2d2040;">{{ cenaLabel }}</strong> / sesja (50 min)</span>
-                </div>
-                <div style="display:flex; align-items:center; gap:8px;">
-                  <div style="width:6px; height:6px; border-radius:50%; background:#9a7cc0; flex:none;"></div>
                   <span style="font-family:'Nunito',sans-serif; font-size:12.5px; color:#4d4060;">Staże kliniczne · doktorantka UJ</span>
                 </div>
                 <div style="display:flex; align-items:center; gap:8px;">
@@ -116,9 +112,9 @@
               <div style="background:#f2eef9; border-radius:14px; padding:16px 12px;">
                 <h3 style="font-family:'Nunito',sans-serif; font-size:11.5px; font-weight:800; color:#5a4080; margin-bottom:12px; text-align:center; text-transform:uppercase; letter-spacing:0.1em;">Umów wizytę</h3>
                 <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:10px;">
-                  <button style="background:none; border:none; color:#9a7cc0; cursor:pointer; font-size:16px; line-height:1; padding:2px 6px;">‹</button>
-                  <span style="font-family:'Nunito',sans-serif; font-size:11.5px; font-weight:700; color:#5a4070;">Czerwiec 2026</span>
-                  <button style="background:none; border:none; color:#9a7cc0; cursor:pointer; font-size:16px; line-height:1; padding:2px 6px;">›</button>
+                  <button onClick="{{ prevMonthA }}" style="background:none; border:none; color:#9a7cc0; cursor:pointer; font-size:16px; line-height:1; padding:2px 6px;">‹</button>
+                  <span style="font-family:'Nunito',sans-serif; font-size:11.5px; font-weight:700; color:#5a4070;">{{ monthLabelA }}</span>
+                  <button onClick="{{ nextMonthA }}" style="background:none; border:none; color:#9a7cc0; cursor:pointer; font-size:16px; line-height:1; padding:2px 6px;">›</button>
                 </div>
                 <div style="display:flex; gap:3px; margin-bottom:10px;">
                   <sc-for list="{{ daysA }}" as="day" hint-placeholder-count="5">
@@ -126,13 +122,13 @@
                       <div style="font-size:9px; font-weight:800; font-family:'Nunito',sans-serif; text-transform:uppercase; letter-spacing:0.05em; line-height:1.3;">{{ day.label }}</div>
                       <div style="font-size:10px; font-family:'Nunito',sans-serif; margin-top:2px; font-weight:600; opacity:0.85;">{{ day.date }}</div>
                     </div>
-                  </sc-if>
+                  </sc-for>
                 </div>
                 <p style="font-family:'Nunito',sans-serif; font-size:10.5px; color:#9a88b0; margin-bottom:6px; font-weight:700; text-align:center; text-transform:uppercase; letter-spacing:0.05em;">Dostępne godziny</p>
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:5px; margin-bottom:12px;">
                   <sc-for list="{{ slotsA }}" as="slot" hint-placeholder-count="4">
                     <div onClick="{{ slot.onClick }}" style="text-align:center; padding:7px; border:{{ slot.border }}; border-radius:7px; cursor:pointer; background:{{ slot.bg }}; color:{{ slot.color }}; font-size:12px; font-weight:700; font-family:'Nunito',sans-serif; transition:all 0.15s;">{{ slot.time }}</div>
-                  </sc-if>
+                  </sc-for>
                 </div>
                 <button style="width:100%; background:#7b5ea7; color:#fff; border:none; border-radius:10px; padding:11px; font-family:'Nunito',sans-serif; font-size:13px; font-weight:800; cursor:pointer; opacity:{{ btnOpacityA }}; letter-spacing:0.01em;">Zarezerwuj wizytę →</button>
               </div>
@@ -149,13 +145,6 @@
               <section>
                 <h2 style="font-family:'Playfair Display',serif; font-size:19px; font-weight:700; color:#2d2040; margin-bottom:12px; padding-bottom:10px; border-bottom:2px solid #ede8f5;">Metody pracy</h2>
                 <div style="display:flex; flex-direction:column; gap:8px;">
-                  <div style="display:flex; align-items:flex-start; gap:12px; padding:14px 16px; background:#f7f3fc; border-radius:12px; border-left:3px solid #7b5ea7;">
-                    <div style="flex:none; width:28px; height:28px; border-radius:50%; background:#7b5ea7; display:flex; align-items:center; justify-content:center; font-family:'Nunito',sans-serif; font-size:11px; font-weight:800; color:#fff;">C</div>
-                    <div style="flex:1;">
-                      <p style="font-family:'Nunito',sans-serif; font-size:13.5px; font-weight:700; color:#2d2040; margin-bottom:2px;">Terapia poznawczo-behawioralna (Dzieci)</p>
-                      <p style="font-family:'Nunito',sans-serif; font-size:12.5px; color:#7a6d8a; line-height:1.5;">Łączenie metod pracy dopasowanych do potrzeb dziecka i młodzieży</p>
-                    </div>
-                  </div>
                   <div style="display:flex; align-items:flex-start; gap:12px; padding:14px 16px; background:#f7f3fc; border-radius:12px; border-left:3px solid #7b5ea7;">
                     <div style="flex:none; width:28px; height:28px; border-radius:50%; background:#7b5ea7; display:flex; align-items:center; justify-content:center; font-family:'Nunito',sans-serif; font-size:11px; font-weight:800; color:#fff;">A</div>
                     <div style="flex:1;">
@@ -272,10 +261,6 @@
                 </div>
                 <div style="display:inline-flex; gap:0; align-items:stretch; background:rgba(0,0,0,0.14); border-radius:12px; overflow:hidden;">
                   <div style="padding:10px 22px; text-align:center; border-right:1px solid rgba(255,255,255,0.14);">
-                    <div style="font-family:'Playfair Display',serif; font-size:20px; font-weight:700; color:#fff; line-height:1.2;">{{ cenaLabel }}</div>
-                    <div style="font-family:'Nunito',sans-serif; font-size:9.5px; color:rgba(255,255,255,0.6); text-transform:uppercase; letter-spacing:0.07em; margin-top:1px;">za sesję</div>
-                  </div>
-                  <div style="padding:10px 22px; text-align:center; border-right:1px solid rgba(255,255,255,0.14);">
                     <div style="font-family:'Playfair Display',serif; font-size:20px; font-weight:700; color:#fff; line-height:1.2;">0</div>
                     <div style="font-family:'Nunito',sans-serif; font-size:9.5px; color:rgba(255,255,255,0.6); text-transform:uppercase; letter-spacing:0.07em; margin-top:1px;">opinii</div>
                   </div>
@@ -301,13 +286,6 @@
               <section>
                 <h2 style="font-family:'Playfair Display',serif; font-size:19px; font-weight:700; color:#2d2040; margin-bottom:12px; padding-bottom:10px; border-bottom:2px solid #ede8f5;">Metody pracy</h2>
                 <div style="display:flex; flex-direction:column; gap:8px;">
-                  <div style="display:flex; align-items:flex-start; gap:12px; padding:14px 16px; background:#f7f3fc; border-radius:12px; border-left:3px solid #7b5ea7;">
-                    <div style="flex:none; width:28px; height:28px; border-radius:50%; background:#7b5ea7; display:flex; align-items:center; justify-content:center; font-family:'Nunito',sans-serif; font-size:11px; font-weight:800; color:#fff;">C</div>
-                    <div style="flex:1;">
-                      <p style="font-family:'Nunito',sans-serif; font-size:13.5px; font-weight:700; color:#2d2040; margin-bottom:2px;">Terapia poznawczo-behawioralna (Dzieci)</p>
-                      <p style="font-family:'Nunito',sans-serif; font-size:12.5px; color:#7a6d8a; line-height:1.5;">Łączenie metod pracy dopasowanych do potrzeb dziecka i młodzieży</p>
-                    </div>
-                  </div>
                   <div style="display:flex; align-items:flex-start; gap:12px; padding:14px 16px; background:#f7f3fc; border-radius:12px; border-left:3px solid #7b5ea7;">
                     <div style="flex:none; width:28px; height:28px; border-radius:50%; background:#7b5ea7; display:flex; align-items:center; justify-content:center; font-family:'Nunito',sans-serif; font-size:11px; font-weight:800; color:#fff;">A</div>
                     <div style="flex:1;">
@@ -368,9 +346,9 @@
               <div style="background:#f2eef9; border-radius:14px; padding:16px 14px;">
                 <h3 style="font-family:'Nunito',sans-serif; font-size:11.5px; font-weight:800; color:#5a4080; margin-bottom:12px; text-align:center; text-transform:uppercase; letter-spacing:0.1em;">Umów wizytę</h3>
                 <div style="display:flex; align-items:center; justify-content:space-between; margin-bottom:10px;">
-                  <button style="background:none; border:none; color:#9a7cc0; cursor:pointer; font-size:16px; line-height:1; padding:2px 6px;">‹</button>
-                  <span style="font-family:'Nunito',sans-serif; font-size:11.5px; font-weight:700; color:#5a4070;">Czerwiec 2026</span>
-                  <button style="background:none; border:none; color:#9a7cc0; cursor:pointer; font-size:16px; line-height:1; padding:2px 6px;">›</button>
+                  <button onClick="{{ prevMonthB }}" style="background:none; border:none; color:#9a7cc0; cursor:pointer; font-size:16px; line-height:1; padding:2px 6px;">‹</button>
+                  <span style="font-family:'Nunito',sans-serif; font-size:11.5px; font-weight:700; color:#5a4070;">{{ monthLabelB }}</span>
+                  <button onClick="{{ nextMonthB }}" style="background:none; border:none; color:#9a7cc0; cursor:pointer; font-size:16px; line-height:1; padding:2px 6px;">›</button>
                 </div>
                 <div style="display:flex; gap:3px; margin-bottom:10px;">
                   <sc-for list="{{ daysB }}" as="day" hint-placeholder-count="5">
@@ -413,12 +391,21 @@
 
 class Component extends DCLogic {
   state = {
-    selDayA: 1, selSlotA: null,
-    selDayB: 1, selSlotB: null,
+    selDayA: 1, selSlotA: null, monthA: 'maj',
+    selDayB: 1, selSlotB: null, monthB: 'maj',
     openFaqA: null, openFaqB: null,
   };
 
-  get rawDays() {
+  rawDaysFor(month) {
+    if (month === 'maj') {
+      return [
+        { label: 'Pon', date: '26.05', slots: ['10:00', '12:00', '14:00'] },
+        { label: 'Wt',  date: '27.05', slots: ['9:00', '11:00', '15:00', '17:00'] },
+        { label: 'Śr',  date: '28.05', slots: ['10:00', '13:00'] },
+        { label: 'Czw', date: '29.05', slots: ['9:00', '11:00', '14:00', '16:00'] },
+        { label: 'Pt',  date: '30.05', slots: ['10:00', '12:00'] },
+      ];
+    }
     return [
       { label: 'Pon', date: '23.06', slots: ['10:00', '12:00', '14:00'] },
       { label: 'Wt',  date: '24.06', slots: ['9:00', '11:00', '15:00', '17:00'] },
@@ -428,8 +415,8 @@ class Component extends DCLogic {
     ];
   }
 
-  buildDays(selDay, onDayClick) {
-    return this.rawDays.map((d, i) => ({
+  buildDays(rawDays, selDay, onDayClick) {
+    return rawDays.map((d, i) => ({
       label: d.label,
       date: d.date,
       bg: i === selDay ? '#7b5ea7' : '#fff',
@@ -438,8 +425,8 @@ class Component extends DCLogic {
     }));
   }
 
-  buildSlots(selDay, selSlot, onSlotClick) {
-    return this.rawDays[selDay].slots.map(s => ({
+  buildSlots(rawDays, selDay, selSlot, onSlotClick) {
+    return rawDays[selDay].slots.map(s => ({
       time: s,
       bg: s === selSlot ? '#7b5ea7' : '#fff',
       color: s === selSlot ? '#fff' : '#5a4080',
@@ -464,15 +451,23 @@ class Component extends DCLogic {
   }
 
   renderVals() {
-    const { selDayA, selSlotA, selDayB, selSlotB, openFaqA, openFaqB } = this.state;
+    const { selDayA, selSlotA, selDayB, selSlotB, openFaqA, openFaqB, monthA, monthB } = this.state;
 
-    const daysA  = this.buildDays(selDayA,  i => this.setState({ selDayA: i, selSlotA: null }));
-    const slotsA = this.buildSlots(selDayA, selSlotA, s => this.setState({ selSlotA: s }));
+    const rawA = this.rawDaysFor(monthA);
+    const daysA  = this.buildDays(rawA, selDayA, i => this.setState({ selDayA: i, selSlotA: null }));
+    const slotsA = this.buildSlots(rawA, selDayA, selSlotA, s => this.setState({ selSlotA: s }));
     const faqsA  = this.buildFaqs(openFaqA, 'openFaqA');
+    const monthLabelA = monthA === 'maj' ? 'Maj 2026' : 'Czerwiec 2026';
+    const prevMonthA = () => this.setState({ monthA: 'maj', selDayA: 1, selSlotA: null });
+    const nextMonthA = () => this.setState({ monthA: 'czerwiec', selDayA: 1, selSlotA: null });
 
-    const daysB  = this.buildDays(selDayB,  i => this.setState({ selDayB: i, selSlotB: null }));
-    const slotsB = this.buildSlots(selDayB, selSlotB, s => this.setState({ selSlotB: s }));
+    const rawB = this.rawDaysFor(monthB);
+    const daysB  = this.buildDays(rawB, selDayB, i => this.setState({ selDayB: i, selSlotB: null }));
+    const slotsB = this.buildSlots(rawB, selDayB, selSlotB, s => this.setState({ selSlotB: s }));
     const faqsB  = this.buildFaqs(openFaqB, 'openFaqB');
+    const monthLabelB = monthB === 'maj' ? 'Maj 2026' : 'Czerwiec 2026';
+    const prevMonthB = () => this.setState({ monthB: 'maj', selDayB: 1, selSlotB: null });
+    const nextMonthB = () => this.setState({ monthB: 'czerwiec', selDayB: 1, selSlotB: null });
 
     const reviews = [];
 
@@ -496,8 +491,8 @@ class Component extends DCLogic {
     const showLabel   = !singleMode;
 
     return {
-      daysA, slotsA, faqsA,
-      daysB, slotsB, faqsB,
+      daysA, slotsA, faqsA, monthLabelA, prevMonthA, nextMonthA,
+      daysB, slotsB, faqsB, monthLabelB, prevMonthB, nextMonthB,
       reviews,
       cenaLabel, formatLabel, onlineNoteText,
       showA, showB, showLabel,
